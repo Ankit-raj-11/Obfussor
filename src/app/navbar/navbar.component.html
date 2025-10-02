@@ -1,0 +1,32 @@
+<nav>
+  <div class="logo">
+    <a routerLink="/dashbord">Obfussor</a>
+  </div>
+  
+  <ul [class.open]="isMenuOpen">
+    <li><a routerLink="/dashbord" (click)="isMenuOpen = false">Dashbord</a></li>
+    <li><a routerLink="/projects" (click)="isMenuOpen = false">Projects</a></li>
+    <li><a routerLink="/settings" (click)="isMenuOpen = false"> Obfuscation Settings</a></li>
+    <li><a routerLink="/builds" (click)="isMenuOpen = false">Build</a></li>
+    <li><a routerLink="/Reports" (click)="isMenuOpen = false">Reports</a></li>
+    <li class="theme-toggle-mobile">
+      <button class="theme-button" (click)="toggleTheme()">
+        <span *ngIf="isDarkTheme">☀️ Light Mode</span>
+        <span *ngIf="!isDarkTheme">🌙 Dark Mode</span>
+      </button>
+    </li>
+  </ul>
+
+  <div class="theme-toggle-desktop">
+    <button class="theme-button" (click)="toggleTheme()">
+      <span *ngIf="isDarkTheme">☀️</span>
+      <span *ngIf="!isDarkTheme">🌙</span>
+    </button>
+  </div>
+  
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <span class="bar" [class.open]="isMenuOpen"></span>
+    <span class="bar" [class.open]="isMenuOpen"></span>
+    <span class="bar" [class.open]="isMenuOpen"></span>
+  </div>
+</nav>

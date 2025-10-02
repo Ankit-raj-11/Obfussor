@@ -1,0 +1,151 @@
+/* ========================================= */
+/* BASE STYLES & LAYOUT (Dark Theme Default) */
+/* ========================================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2c3e50; /* Dark background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ecf0f1; /* Light text */
+  transition: color 0.3s;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #bdc3c7;
+  padding: 10px 15px;
+  display: block;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #3498db;
+  background-color: #34495e;
+}
+
+/* Hide mobile-specific items initially */
+.menu-toggle,
+.theme-toggle-mobile {
+  display: none;
+}
+
+/* ========================================= */
+/* THEME TOGGLE BUTTON STYLES */
+/* ========================================= */
+
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 5px;
+  color: #ecf0f1;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle-desktop {
+  margin-left: 15px;
+}
+
+.theme-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================= */
+/* RESPONSIVENESS (Mobile View) */
+/* ========================================= */
+
+/* Styles for the Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ecf0f1;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+/* Hamburger transition/animation when open */
+.bar:nth-child(1).open {
+  transform: translateY(11px) rotate(45deg);
+}
+.bar:nth-child(2).open {
+  opacity: 0;
+}
+.bar:nth-child(3).open {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Mobile Media Query */
+@media (max-width: 768px) {
+  /* Show hamburger menu and hide desktop theme toggle */
+  .menu-toggle {
+    display: flex;
+  }
+  .theme-toggle-desktop {
+    display: none;
+  }
+  .theme-toggle-mobile {
+    display: block !important;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  nav ul.open {
+    transform: translateX(0);
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
+  }
+
+  nav ul li a,
+  .theme-button {
+    padding: 15px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    display: inline-block;
+  }
+}
